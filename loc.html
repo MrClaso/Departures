@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Avgångar från station i närheten</title>
+</head>
+
+<body>
+    <h1>Avgångar från station i närheten</h1>
+    <div id="response"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js "></script>
+    <script>
+
+        function success(pos) {
+            $x = pos.coords.longitude;
+            $y = pos.coords.latitude;
+            $.post('getcoordinates.php', {
+                x: $x,
+                y: $y,
+            }, function (data) {
+                // demonstrate the response
+                $('#response').html(data);
+            }).fail(function () {
+                // if posting your form failed
+                alert("Posting failed.");
+            });
+
+        }
+        
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success)
+        }
+        else {
+            alert("Sorry! Geolocation API is not supported.")
+        }
+     </script>
+</body>
+
+</html>
