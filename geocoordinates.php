@@ -45,16 +45,16 @@ $dist = sqrt(($x - 18071707) * ($x - 18071707) + ($y - 59345543) * ($y - 5934554
 echo "Avståndet till Tekniska högskolan är " . sprintf("%1\$u", $dist) . " km";
 echo "<br>";
 echo "<br>";
-
+if(!ok){
 if ($dist < 1.3) {
     // Tekniska
     $siteId = "9204";
     $transportation = "Metros";
     $ok = true;
 }
-
+}
 if ($ok) {
-    $url = "https://api.sl.se/api2/realtimedeparturesV4.json?key=<DIN API NYCKEL>&siteid=" . $siteId . "&Bus=False&Tram=False&timewindow=60";
+    $url = "https://api.sl.se/api2/realtimedeparturesV4.json?key=92dce9d3588142c49a21345f037dff2a&siteid=" . $siteId . "&Bus=False&Tram=False&timewindow=60";
 
     $json = file_get_contents($url);
     //    echo $json;
